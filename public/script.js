@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const userMessage = input.value.trim();
     if (!userMessage) return;
     
-
+    // Disable form and show loading state
     input.disabled = true;
     sendBtn.disabled = true;
-    sendBtn.innerHTML = '<div class="loader"></div>';
+    sendBtn.innerHTML = '<div class="loader"></div>'; // Simple CSS loader
 
     appendMessage('user', userMessage);
     input.value = '';
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingMsg = appendMessage('bot', '...');
 
     try {
+      // NOTE: Make sure your local server is running at http://localhost:3000
       const response = await fetch('http://localhost:3000/generate-text', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -59,27 +60,27 @@ document.addEventListener('DOMContentLoaded', () => {
   function appendMessage(sender, text) {
     const msg = document.createElement('div');
     msg.classList.add('message', sender);
-
+  
     const avatar = document.createElement('div');
     avatar.className = 'avatar';
     avatar.textContent = sender === 'user' ? '🧑' : '🤖';
-
+  
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
-    
+  
 
-    const sanitizedText = text.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, '<br>');
-    bubble.innerHTML = sanitizedText;
-    
-
-    if(text === '...') {
+    if (text === '...') {
       bubble.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+    } else if (sender === 'bot' && window.marked) {
+      bubble.innerHTML = marked.parse(text);
+    } else {
+      const sanitizedText = text.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, '<br>');
+      bubble.innerHTML = sanitizedText;
     }
-
-
+  
     msg.appendChild(avatar);
     msg.appendChild(bubble);
-
+  
     chatBox.appendChild(msg);
     chatBox.scrollTop = chatBox.scrollHeight;
     return msg;

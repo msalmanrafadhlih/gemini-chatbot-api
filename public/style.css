@@ -173,6 +173,18 @@ body {
   box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
 }
 
+.bubble ul, .bubble ol {
+  margin: 8px 0 8px 22px;
+  padding: 0;
+}
+.bubble li {
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+.bubble p {
+  margin: 8px 0;
+}
+
 .user .bubble {
   background: var(--bubble-user-bg);
   color: #fff;
