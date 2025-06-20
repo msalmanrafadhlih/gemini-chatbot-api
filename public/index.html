@@ -8,12 +8,26 @@
 </head>
 <body>
   <div class="container">
-    <h1>Gemini AI Chatbot</h1>
-    <div id="chat-box" class="chat-box"></div>
-    <div id="token-count" style="margin:8px 0; color:#888; font-size:0.95em;">Token Count: 0</div>
+    <div class="header">
+      <h1>Gemini AI</h1>
+      <p>Your friendly AI Chatbot</p>
+    </div>
+    <div id="chat-box" class="chat-box">
+      <div class="message bot">
+        <div class="avatar">🤖</div>
+        <div class="bubble">Halo! Ada yang bisa saya bantu?</div>
+      </div>
+    </div>
+    <div id="token-count" class="token-counter">Token Count: 0</div>
     <form id="chat-form">
-      <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" required />
-      <button type="submit">Send</button>
+      <div class="input-container">
+        <input type="text" id="user-input" placeholder="Ketik pesan Anda di sini..." autocomplete="off" required />
+        <button type="submit" id="send-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+          </svg>
+        </button>
+      </div>
     </form>
   </div>
   <script src="script.js"></script>
