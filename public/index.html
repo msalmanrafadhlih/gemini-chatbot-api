@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <div class="container ctn2" style="height: 50vh;">
+    <div class="header">
+      <h1>API Key</h1>
+      <p>Enter Your API Key here!</p>
+      <div id="api-key-container"></div>
+    </div>
+  </div>
   <div class="container">
     <div class="header">
       <h1>Gemini AI</h1>
@@ -15,13 +22,19 @@
     <div id="chat-box" class="chat-box">
       <div class="message bot">
         <div class="avatar">🤖</div>
-        <div class="bubble">Halo! Ada yang bisa saya bantu?</div>
+        <div class="bubble"> Halo! Ada yang bisa saya bantu?</div>
       </div>
     </div>
-    <div id="token-count" class="token-counter">Token Count: 0</div>
+    <div class="toggles">
+      <div id="token-count" class="token-counter">Token Count: 0</div>
+      <button id="download-chat" type="button">Download Riwayat Chat</button>
+      <input id="load-chat-file" type="file" accept=".json" style="display:none;">
+      <button id="load-chat-btn" type="button">Load Chat</button>
+      <button id="reset-chat" type="button">Reset Chat</button>
+    </div>
     <form id="chat-form">
       <div class="input-container">
-        <input type="text" id="user-input" placeholder="Ketik pesan Anda di sini..." autocomplete="off" required />
+        <input type="text" id="user-input" placeholder="Ketik pesan Anda di sini..." autocomplete="off" required /><br>
         <button type="submit" id="send-btn">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
